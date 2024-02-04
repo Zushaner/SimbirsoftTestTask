@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+def aspectJVersion = "1.9.20.1"
+configurations {
+    agent {
+        canBeResolved = true
+        canBeConsumed = true
+    }
+}
+group = 'org'
+version = '1.0-SNAPSHOT'
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    agent "org.aspectj:aspectjweaver:$aspectJVersion"
+    implementation 'org.seleniumhq.selenium:selenium-java:4.16.1'
+    implementation 'io.qameta.allure:allure-testng:2.24.0'
+    testImplementation 'org.testng:testng:7.7.0'
+    implementation platform("io.qameta.allure:allure-bom:2.24.0")
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+}
+
+test {
+    useTestNG()
+    jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
+}
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
