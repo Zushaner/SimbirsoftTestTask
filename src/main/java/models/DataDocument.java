@@ -6,13 +6,13 @@ import enums.Subjects;
 import org.apache.commons.lang3.RandomStringUtils;
 import utils.Utils;
 
-public record DataDocument(String firstName, String secondName, String email, int gender, String genderName,
+public record DataDocument(String firstName, String lastName, String email, int gender, String genderName,
                            String number, int year, Month month, int day, Subjects subjects, String address,
                            States states, String city) {
 
-    public static DataDocument generateRandomDocument() {
+    public static DataDocument generateRandomData() {
         String firstName = RandomStringUtils.randomAlphabetic(Utils.getRandomInt(1, 20));
-        String secondName = RandomStringUtils.randomAlphabetic(Utils.getRandomInt(1, 20));
+        String lastName = RandomStringUtils.randomAlphabetic(Utils.getRandomInt(1, 20));
         String email = RandomStringUtils.randomAlphabetic(Utils.getRandomInt(1, 20)) + "@" + RandomStringUtils.randomAlphabetic(4) + ".com";
         int gender = Utils.getRandomInt(0, 3);
         String genderName = genderByNumber(gender);
@@ -24,7 +24,7 @@ public record DataDocument(String firstName, String secondName, String email, in
         String address = RandomStringUtils.randomAlphabetic(40);
         States states = States.values()[Utils.getRandomInt(0, 3)];
         String city = states.getCity();
-        return new DataDocument(firstName, secondName, email, gender, genderName, number, year, month, day, subjects, address, states, city);
+        return new DataDocument(firstName, lastName, email, gender, genderName, number, year, month, day, subjects, address, states, city);
     }
 
     private static String genderByNumber(int a) {

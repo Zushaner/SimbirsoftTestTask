@@ -28,7 +28,6 @@ public class RegistrationTests {
     @BeforeMethod
     public void before() {
         driver = InitWebDriver.initWebDriver();
-
         driver.get(RegistrationPage.URL);
         registrationPage = PageFactory.initElements(driver, RegistrationPage.class);
         registrationSteps = new RegistrationSteps(registrationPage);
@@ -38,14 +37,14 @@ public class RegistrationTests {
     @Description("Тестирование правильности отображения данных, введенных в форму")
     @Severity(SeverityLevel.NORMAL)
     public void MainTest() {
-        DataDocument document = DataDocument.generateRandomDocument();
+        DataDocument document = DataDocument.generateRandomData();
         File image = new File("src/test/Images/Picture.PNG");
 
         registrationSteps
                 .inputFirstName(document.firstName())
-                .inputSecondName(document.secondName())
+                .inputLastName(document.lastName())
                 .inputEmail(document.email())
-                .choiceGender(document.gender())
+                .selectGender(document.gender())
                 .inputMobile(document.number())
                 .selectDate(document.year(), document.month(), document.day())
                 .inputSubject(document.subjects())
@@ -55,8 +54,8 @@ public class RegistrationTests {
                 .submitData();
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(registrationPage.getValueTitle(), "Thanks for submitting the form");
-        softAssert.assertEquals(registrationPage.getValueByField("Student Name"), (document.firstName() + " " + document.secondName()));
+        softAssert.assertEquals(registrationPage.getTitle(), "Thanks for submitting the form");
+        softAssert.assertEquals(registrationPage.getValueByField("Student Name"), (document.firstName() + " " + document.lastName()));
         softAssert.assertEquals(registrationPage.getValueByField("Student Email"), document.email());
         softAssert.assertEquals(registrationPage.getValueByField("Gender"), document.genderName());
         softAssert.assertEquals(registrationPage.getValueByField("Mobile"), document.number());

@@ -21,13 +21,11 @@ public class RegistrationSteps {
         registrationPage.getFirstNameElement().sendKeys(text);
         return this;
     }
-
     @Step("Введена фамилия = {text}")
-    public RegistrationSteps inputSecondName(String text) {
+    public RegistrationSteps inputLastName(String text) {
         registrationPage.getLastNameElement().sendKeys(text);
         return this;
     }
-
     @Step("Введен email = {text}")
     public RegistrationSteps inputEmail(String text) {
         registrationPage.getEmailElement().sendKeys(text);
@@ -39,8 +37,8 @@ public class RegistrationSteps {
         return this;
     }
     @Step("Выбран пол")
-    public RegistrationSteps choiceGender(int a) {
-        registrationPage.genderChoice(a);
+    public RegistrationSteps selectGender(int a) {
+        registrationPage.selectGender(a);
         return this;
     }
     @Step("Выбрана дата = {day} {month.displayName} {year}")
@@ -69,11 +67,9 @@ public class RegistrationSteps {
         registrationPage.getUploadPictureElement().sendKeys(ap);
         return this;
     }
-
     @Step("Данные отправлены")
     public  RegistrationSteps submitData() {
         registrationPage.submitData();
         return this;
-
     }
 }

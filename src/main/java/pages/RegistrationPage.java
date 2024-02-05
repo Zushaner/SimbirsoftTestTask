@@ -46,7 +46,7 @@ public class RegistrationPage {
     WebElement submitElement;
 
     public WebElement getUploadPictureElement() {
-        new Actions(driver).scrollToElement(uploadPictureElement).scrollByAmount(0, 50).perform(); //сдвиг на числовое значение, так как поле может оказаться перекрыто футером
+        new Actions(driver).scrollToElement(uploadPictureElement).scrollByAmount(0, 50).perform(); //дополнительный сдвиг на 50 пикселей необходим, так как поле может оказаться перекрыто футером
         return uploadPictureElement;
     }
 
@@ -99,13 +99,9 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage genderChoice(int a) {
+    public RegistrationPage selectGender(int a) {
         genderElements.get(a).click();
         return this;
-    }
-
-    public String getValueByField(String field) {
-        return driver.findElement(By.xpath("//td[contains(text(), '" + field + "')]/../td[2]")).getText();
     }
 
     public RegistrationPage inputSubject(Subjects subject) {
@@ -116,13 +112,19 @@ public class RegistrationPage {
         return this;
     }
 
-    public String getValueTitle() {
-        return driver.findElement(By.id("example-modal-sizes-title-lg")).getText();
-    }
-
     public RegistrationPage submitData(){
         submitElement.click();
         return this;
+    }
+
+    //метод, который позволяет получить значение заголовка в заполненной форме
+    public String getTitle() {
+        return driver.findElement(By.id("example-modal-sizes-title-lg")).getText();
+    }
+
+    //метод, который позволяет получить значение поля по его названию в заполненной форме
+    public String getValueByField(String field) {
+        return driver.findElement(By.xpath("//td[contains(text(), '" + field + "')]/../td[2]")).getText();
     }
 
 }
