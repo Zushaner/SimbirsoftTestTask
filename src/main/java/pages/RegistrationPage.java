@@ -51,7 +51,7 @@ public class RegistrationPage {
     }
 
     public WebElement getFirstNameElement() {
-        new Actions(driver).scrollToElement(firstNameElement).scrollByAmount(0, 50).perform();;
+        new Actions(driver).scrollToElement(firstNameElement).scrollByAmount(0, 50).perform();
         return firstNameElement;
     }
 
