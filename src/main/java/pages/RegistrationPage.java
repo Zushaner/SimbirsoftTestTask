@@ -46,31 +46,38 @@ public class RegistrationPage {
     WebElement submitElement;
 
     public WebElement getUploadPictureElement() {
+        new Actions(driver).scrollToElement(uploadPictureElement).scrollByAmount(0, 50).perform(); //сдвиг на числовое значение, так как поле может оказаться перекрыто футером
         return uploadPictureElement;
     }
 
     public WebElement getFirstNameElement() {
+        new Actions(driver).scrollToElement(firstNameElement).scrollByAmount(0, 50).perform();;
         return firstNameElement;
     }
 
     public WebElement getLastNameElement() {
+        new Actions(driver).scrollToElement(lastNameElement).scrollByAmount(0, 50).perform();
         return lastNameElement;
     }
 
     public WebElement getEmailElement() {
+        new Actions(driver).scrollToElement(emailElement).scrollByAmount(0, 50).perform();
         return emailElement;
     }
 
     public WebElement getUserNumberElement() {
+        new Actions(driver).scrollToElement(userNumberElement).scrollByAmount(0, 50).perform();
         return userNumberElement;
     }
 
     public WebElement getCurrentAddressElement() {
+        new Actions(driver).scrollToElement(currentAddressElement).scrollByAmount(0, 50).perform();
         return currentAddressElement;
     }
 
 
     public RegistrationPage selectDate(int year, Month month, int day) {
+        new Actions(driver).scrollToElement(subjectsElement).scrollByAmount(0, 50).perform();
         dateElement.click();
         Select selectYear = new Select(driver.findElement(By.className("react-datepicker__year-select")));
         selectYear.selectByValue(String.valueOf(year));

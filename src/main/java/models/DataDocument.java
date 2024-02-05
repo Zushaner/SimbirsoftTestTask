@@ -18,8 +18,8 @@ public record DataDocument(String firstName, String secondName, String email, in
         String genderName = genderByNumber(gender);
         String number = RandomStringUtils.randomNumeric(10);
         int year = Utils.getRandomInt(1900, 2100);
-        Month month = Month.values()[Utils.getRandomInt(0, 11)]; // от 0 до 11
-        int day = Utils.getRandomInt(1, month.getCountDay()); // от 1 до mounth.getCountDay()
+        Month month = Month.values()[Utils.getRandomInt(0, 11)];
+        int day = Utils.getRandomInt(1, month.getCountDay());
         Subjects subjects = Subjects.values()[Utils.getRandomInt(0, 13)];
         String address = RandomStringUtils.randomAlphabetic(40);
         States states = States.values()[Utils.getRandomInt(0, 3)];

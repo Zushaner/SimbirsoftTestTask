@@ -2,8 +2,6 @@ package enums;
 
 import utils.Utils;
 
-import java.util.ArrayList;
-
 public enum States {
     NRC("NCR", new String[] {"Delhi", "Gurgaon", "Noida"}),
     UP("Uttar Pradesh", new String[] {"Agra", "Lucknow", "Merrut"}),

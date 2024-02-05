@@ -34,8 +34,8 @@ public class RegistrationTests {
         registrationSteps = new RegistrationSteps(registrationPage);
     }
 
-    @Test(testName = "")
-    @Description("")
+    @Test(testName = "Тестирование формы")
+    @Description("Тестирование правильности отображения данных, введенных в форму")
     @Severity(SeverityLevel.NORMAL)
     public void MainTest() {
         DataDocument document = DataDocument.generateRandomDocument();

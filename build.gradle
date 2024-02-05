@@ -30,6 +30,7 @@ test {
     useTestNG()
     jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
 }
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
